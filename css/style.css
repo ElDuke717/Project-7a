@@ -34,18 +34,23 @@ header {
     align-items: center;
     height: auto;
     width: auto;
+        
 }
 
-.right {
+.profile-info {
     display: flex;
     padding: 10px;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     margin-left: auto;
     margin-right: 20px; 
   }
 
-.right * {
+  .profile-info h3 {
+    color: var(--theme-color-white);
+  }
+
+.profile-info * {
     margin: 5px;
 }
 
@@ -70,6 +75,7 @@ header {
     height: 35px;
     width: 35px;
     border-radius: 50%;
+    margin: 10px;
 }
 
 #notifications {
@@ -105,12 +111,24 @@ nav {
   border-right: 1px solid var(--color-border);
   background-color: var(--theme-color-white);
   border-bottom: none;
+  color: var(--color-border);
 }
 
 .main-header-search {
   margin: 0 20px 0 0;
 }
 
+.search-field{
+  width: 400px;
+  height: 40px;
+  padding-left: 20px;
+  border-radius: 2px;
+}
+
+input[type="search"]::placeholder {
+  /* text-align: right; */
+  margin-left: 10px;
+}
 
 .alert-banner {
   text-align: center;
@@ -118,12 +136,15 @@ nav {
   color: #ffffff;
 }
 
+h3 {
+  margin: 20px;
+  color: var(--color-border);
+}
+
 .traffic-header {
   display: flex;
   justify-content: space-between;
   align-items: center
-  
-
 }
 
 .traffic-nav {
@@ -136,6 +157,7 @@ nav {
   margin: 10px 20px 10px 20px;
   border-radius: 20px;
   padding: 10px;
+  color: var(--color-border)
 }
 
 .traffic-nav li:hover {
