@@ -30,7 +30,7 @@ header {
     background-color:var(--theme-color-lightviolet);
     color: var(--color-keys-light);
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     height: auto;
     width: auto;
@@ -253,7 +253,7 @@ p.count {
   }
   .grid-container {
       grid-template-columns: 80px 1fr;
-      grid-template-rows: 60px 1fr;
+      grid-template-rows: 60px 2fr;
       grid-template-areas:
       "head head"
       "nav main";
