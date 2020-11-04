@@ -7,9 +7,10 @@
     --theme-color-green: #81C98F;
     --theme-color-lightblue: #74B1BF;
     --theme-color-white: #FFF;
-    --color-neutral-light: #f1efef;
+    --color-neutral-light: #f3f1f1;
     --color-border: #929799;
     --color-keys-light: #E5E5E5;
+    --theme-color-alert: #FF4900;
     --font-size-large: 60px;
     --font-size-med-large: 40px;
     --font-size-medium: 20px;
@@ -29,7 +30,7 @@ header {
     background-color:var(--theme-color-lightviolet);
     color: var(--color-keys-light);
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     height: auto;
     width: auto;
@@ -68,6 +69,12 @@ header {
     max-width: 100%;
     height: 20px;
     width: 20px;
+    background-color: var(--theme-color-lightviolet);
+}
+
+.st0:hover {
+  fill: var(--theme-color-alert);
+  
 }
 
 .profile-image {
@@ -77,9 +84,7 @@ header {
     margin: 10px;
 }
 
-img {
-  max-width: 100%;
-}
+
 
 #notifications {
     background-color: var(--theme-color-green);
@@ -91,6 +96,23 @@ img {
     margin-left: -7px;
     margin-bottom: 25px;
 }
+
+.notifications .notification-text {
+  visibility: hidden;
+  width: 120px;
+  background-color: var(--color-neutral-light);
+  color: var(--theme-color-darkerviolet);
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+}
+
+.notifications:hover .notification-text {
+  visibility: visible;
+}
+
 
 nav {
     display: flex;
@@ -170,7 +192,6 @@ h3 {
 
 .traffic-nav li {
   list-style-type: none;
-  /* margin: 10px 20px 10px 20px; */
   border-radius: 20px;
   padding: 10px;
   color: var(--color-border)
@@ -181,14 +202,44 @@ h3 {
   color: var(--theme-color-white);
 }
 
+#traffic-chart {
+  width: auto;
+  height: auto;
+}
+
+#daily-chart {
+  width: auto;
+  height: auto;
+}
+
+#mobile-chart {
+  width: auto;
+  height: auto;
+}
+
 .icon {
     max-width: 100%;
     height: 30px;
     width: 30px;
     background-color: var(--theme-color-darkviolet);
     margin: 20px;
-    /* padding: 2px; */
    
+}
+
+.dashboard-icon {
+  max-width: 100%;
+  height: 30px;
+  width: 30px;
+  background-color: var(--theme-color-darkviolet);
+  margin: 20px;
+}
+
+.st01 {
+  fill: var(--theme-color-white);
+}
+
+.st01:hover {
+  fill: var(--color-border);
 }
 
 .social-container {
