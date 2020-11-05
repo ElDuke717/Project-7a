@@ -33,8 +33,9 @@ let trafficData = {
         pointRadius: 5,
         pointBorderWidth: 10,
         pointStyle: 'circle',
-        borderColor: 'rgb(116, 119, 191, .5)'
-        
+        borderColor: 'rgb(116, 119, 191, .5)',
+        responsive: true,
+        maintainAspectRatio: true
     }]    
 };
 
@@ -72,8 +73,17 @@ const dailyData = {
     datasets: [{
         label: '# of Hits',
         data: [75, 115, 175, 125, 225, 200, 100],
-        backgroundColor: '#7477BF',
-        borderWidth: 1
+        backgroundColor: ['#7477BF',
+                          '#FF4900',
+                          '#74B1BF',
+                          '#81C98F',
+                          'coral',
+                          'yellow',
+                          'cornflowerblue'
+    ],
+        borderWidth: 1,
+        responsive: true,
+        maintainAspectRatio: true,
     }]
 };
 
@@ -99,16 +109,20 @@ let dailyChart = new Chart(dailyCanvas, {
 const mobileCanvas = document.getElementById("mobile-chart");
 
 const mobileData = {
-    labels: ["Desktop", "Tablet", "Phones"],
+    labels: ["Desktop", "Tablet", "Phones", "Robot", "Flip Phone"],
     datasets: [{
         label: '# of Users',
-        data: [2000, 550, 500],
+        data: [1500, 1025, 450, 50, 25],
         borderWidth: 0,
         backgroundColor: [
             '#7477BF',
             '#78CF82',
-            '#51B6C8'
-        ]
+            '#51B6C8',
+            '#FF4900',
+            'yellow'           
+        ],
+        responsive: true,
+        maintainAspectRatio: true
     }]
 };
 
