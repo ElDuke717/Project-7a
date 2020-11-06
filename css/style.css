@@ -14,6 +14,7 @@
     --font-size-large: 60px;
     --font-size-med-large: 40px;
     --font-size-medium: 20px;
+    --input-shadow: inset 0 0 3px #858585;
     --transition: all .1s ease-in-out;
   }
 
@@ -77,16 +78,12 @@ header {
  
 }
 
-
-
 .profile-image {
     height: 35px;
     width: 35px;
     border-radius: 50%;
     margin: 10px;
 }
-
-
 
 #notifications {
     background-color: var(--theme-color-green);
@@ -151,6 +148,7 @@ nav {
   height: 40px;
   padding-left: 20px;
   border-radius: 2px;
+  box-shadow: var(--input-shadow);
 }
 
 input[type="search"]::placeholder {
@@ -348,7 +346,7 @@ p.count {
 
 .members-container .member-date {
   position: absolute;
-  left: 60%;
+  left: 80%;
 }
 
 .members-text p {
@@ -373,21 +371,120 @@ p.count {
 .widget-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
   
 }
 
 .widget-container > * {
   margin: 10px;
-  
 }
 
-.settings {
+#userField {
+  height: 40px;
+  width: 300px;
+  background-color: var(--color-neutral-light);
+  border-radius: 2px;
+  box-shadow: var(--input-shadow);;
+}
+
+#messageField {
+  height: 100px;
+  width: 300px;
+  background-color: var(--color-neutral-light);
+  border-radius: 2px;
+  box-shadow: var(--input-shadow);;
+}
+
+.button-primary {
+  background-color: var(--theme-color-lightviolet);
+  color: var(--theme-color-white);
+  border-radius: 2px;
+  height: 40px;
+  width: 300px;
+}
+
+/* Settings container layout*/
+
+
+.switch-text-email {
+  width: 200px;
+  margin-right: 20px; 
+}
+
+.switch-text-profile {
+  width: 200px;
+  margin-right: 20px; 
+}
+
+.email-notifications {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+}
+
+.email-switch {
+  width: 200px;
   
 }
 
+.profile-to-public {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.public-switch {
+  width: 200px;
+}
+
+.email-notifications {
+  grid-area: email;
+}
+
+
+.profile-to-public {
+  grid-area: profile;
+}
+
+
+.timezone {
+  grid-area: timezone;
+}
+
+.settings-button {
+  grid-area: buttons;
+}
+
+.settings-container {
+  display: grid;
+  grid-gap: 2px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-areas:
+  "email email email email"
+  "profile profile profile profile"
+  "timezone timezone timezone timezone"
+  "buttons buttons buttons buttons";
+
+}
+
+
+.settings-button {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 16px;
+}
+
+#save {
+  max-width: 100px;
+}
+
+#cancel {
+  max-width: 100px;
+  width: 100px;
+  height: 40px;
+}
 
 @media (min-width: 768px) {
   .grid-container {

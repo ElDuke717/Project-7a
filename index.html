@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YourApp</title>
+    <title>Social Dashboard</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
@@ -13,7 +13,7 @@
 <body class="grid-container">
     <header>
         <div class="left">
-            <h1><em>Your</em><span class="logo">App</span>&trade;</h1>
+            <h1><em>Social</em><span class="logo">Dashboard</span>&trade;</h1>
         </div>
         <div class="profile-info">
             <div class="bell"></div>
@@ -284,46 +284,51 @@
             <h3>Message User</h3>
 
             <form class="widget-container">
-                <input type="text" placeholder="Search for User" class="form-field" id=userField>
+                <input type="text" placeholder="Search for User" class="form-field" id="userField">
                 <textarea placeholder="Message for user" class="form-area" id="messageField"></textarea>
                 <button class="button-primary" id="send">Send</button>
             </form>
         </section>
+
         <!-- local settings widget -->
         <section class="settings" id="settings">
             <h3>Settings</h3>
-
+        <div class="settings-container">
+        
         <!-- Switches -->
-            <label class="switch-light switch-ios" onclick="">
-                <input type="checkbox">
-             
-                <strong>
-                  Send E-mail Notifications
-                </strong>
-              
-                <span>
-                  <span>Off</span>
-                  <span>On</span>
-                  <a></a>
-                </span>
-              </label>
-              
-              <label class="switch-light switch-ios" onclick="">
-                <input type="checkbox">
-              
-                <strong>
-                  Set Profile To Public
-                </strong>
-              
-                <span>
-                  <span>Off</span>
-                  <span>On</span>
-                  <a></a>
-                </span>
-              </label>
+            <!-- Send Email Notifications Switch -->
+            <div class="email-notifications">
+                <p class="switch-text-email">Send E-mail Notifications</p>
+                <div class="email-switch">
+                    <label class="switch-light switch-ios" onclick="">
+                        <input type="checkbox">
+                        <span class="note-switch">
+                        <span>Off</span>
+                        <span>On</span>
+                        <a></a>
+                        </span>
+                    </label>
+                </div>
+            
+            </div>
+            
+            <!-- Set Profile To Public Switch -->
+            <div class="profile-to-public">
+                <p class="switch-text-profile">Set Profile To Public</p>
+                <div class="public-switch">
+                    <label class="switch-light switch-ios" onclick="">
+                        <input type="checkbox">         
+                        <span class="profile-switch">
+                        <span>Off</span>
+                        <span>On</span>
+                        <a></a>
+                        </span>
+                    </label>
+                </div>
+            </div> 
               
 
-            <select class="form-field" id="timezone">
+            <select class="form-field timezone" id="timezone">
                 <option disabled selected>Select a Timezone</option>
                 <option>Eastern</option>
                 <option>Central</option>
@@ -334,6 +339,7 @@
                 <button class="button-primary" id="save">Save</button>
                 <button class="button-disabled" id="cancel">Cancel</button>
             </div>
+        </div>
         </section>
 
 
