@@ -379,7 +379,16 @@ p.count {
   margin: 10px;
 }
 
+.widget-container-full​, ​
+.widget-container-half​ {
+    width: ​95vw​;
+}
+
 /* Message-User Field */
+
+.members-section {
+  width: 80vw;
+}
 
 #userField {
   height: 40px;
@@ -406,7 +415,6 @@ p.count {
 }
 
 /* Settings container layout*/
-
 
 .switch-text-email {
   width: 200px;
@@ -443,11 +451,9 @@ p.count {
   grid-area: email;
 }
 
-
 .profile-to-public {
   grid-area: profile;
 }
-
 
 .timezone {
   grid-area: timezone;
@@ -467,9 +473,7 @@ p.count {
   "profile profile profile profile"
   "timezone timezone timezone timezone"
   "buttons buttons buttons buttons";
-
 }
-
 
 .settings-button {
   display: flex;
@@ -490,19 +494,25 @@ p.count {
 
 
 /* Mobile viewports */
-@media (min-width: 320px) {
+
+@media (max-width: 468px) {
     main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 95vw;
+    width: 100vw;
     justify-content: space-evenly;
-    margin-left: 10px;
+   
   }
   .left {
     font-size: 0.75em;
   }
-  
+  .main-header {
+    max-width: 100%;
+  }
+  nav {
+    max-width: 100%;
+  }
   .search-field{
     width: 300px;
     height: 40px;
@@ -535,7 +545,7 @@ p.count {
   }
 }
 
-
+/* 768px viewports and greater  */
 
 @media (min-width: 768px) {
   .grid-container {
@@ -555,9 +565,50 @@ p.count {
     flex-direction: row;
     justify-content: center;
     align-content: space-between;  
+    max-width: auto;
+  }
+ .traffic-headline {
+   margin-right: 100px;
+ }
+
+  main {
+    display: grid;
+    grid-template-columns: 50%;
+  }
+
+}
+
+/*grid layout 768px and greater*/
+
+@media (min-width:768px) {
+  .main-header, .traffic, .social-container, .alert {
+      grid-column: 1 / span 2;
   }
 }
 
+@media (min-width: 768px) {
+  .daily, .new-members, .message {
+    grid-column: 1 / span 1;
+  }
+}
+
+@media (min-width: 768px) {
+  .mobile, .recent-activity, .settings {
+    grid-column: 2 / span 1;
+  }
+}
+    
+@media (min-width: ​768px​) {​
+  .widget-container-full​ {
+    width: ​95vw​;
+  }​
+    
+    .widget-container-half​ {
+      width: 45vw;
+    }
+}
+
+/* Desktop layout */
 @media (min-width: 1024px) {
   header {
       grid-area: head;
@@ -594,48 +645,5 @@ p.count {
 }
 
 
-@media (min-width: 768px) {
-  main {
-    display: grid;
-    grid-template-columns: 50%;
-  }
-}
-
-@media (min-width:768px) {
-  .main-header, .traffic, .social-container {
-      grid-column: 1 / span 2;
-  }
-}
-
-@media (min-width: 768px) {
-  .daily, .new-members, .message {
-    grid-column: 1 / span 1;
-  }
-}
-
-@media (min-width: 768px) {
-  .mobile, .recent-activity, .settings {
-    grid-column: 2 / span 1;
-  }
-}
-
-.widget-container-full​, ​
-.widget-container-half​ {
-    width: ​95vw​;
-}
-    
-@media (min-width: ​768px​) {​
-  .widget-container-full​ {
-    width: ​95vw​;
-  }​
-    
-    .widget-container-half​ {
-      width: 45vw;
-    }
-}
 
 
-
-.members-section {
-  width: 80vw;
-}
