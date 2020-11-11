@@ -72,6 +72,12 @@ let trafficData = {
     }]    
 };
 
+function updateChart() {
+    chart.data.datasets[0].data = [250, 500, 750, 1000, 1500, 1750, 1250, 1850, 2250, 1500,
+        2500]; 
+    chart.update();
+};
+
 
 let trafficOptions = {
     aspectRatio: 2.5,

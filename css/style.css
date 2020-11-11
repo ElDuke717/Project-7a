@@ -302,6 +302,7 @@ input[type="search"]::placeholder {
   padding: 6px 8px;
   text-decoration: none;
   display: block;
+  border: 2px solid black
 }
 
 h3 {
@@ -322,14 +323,20 @@ h3 {
 
 .traffic-nav li {
   list-style-type: none;
+  margin: 10px;
+}
+
+.traffic-nav-link {
+  list-style-type: none;
   border-radius: 20px;
   padding: 10px;
   color: var(--color-border)
 }
 
-.traffic-nav li:hover {
+.traffic-nav-link:focus  {
   background-color: var(--theme-color-green);
   color: var(--theme-color-white);
+  border-radius: 20px;
 }
 
 .widget-container-full​ {
