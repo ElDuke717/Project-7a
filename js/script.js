@@ -5,11 +5,39 @@ const alertBanner = document.getElementById("alert");
 alertBanner.innerHTML =
 `
 <div class="alert-banner">
-    <p><strong>Alert:</strong> You have <strong>6</strong> overdue tasks to complete</p>
-    <p class="alert-banner-close">x</p>
+    <div class="dropdown">
+    <button onclick="myFunction()" class="dropbtn"><strong>Alert:</strong> You have <strong>2</strong> overdue tasks to complete</button>
+    <div id="myDropdown" class="dropdown-content">
+                <a href="#Farikh_Ansfar">Review comments left by <strong>Farikh Ansfar</strong></a>
+                <a href="#Andy_Grabowski">Moderate new content from <strong>Andy Grabowski</strong></a>
+            </div>
+    <p class="myDropdown" id="myDropdown"></p>
     
+    </div>
+    <p class="alert-banner-close">x</p>
 </div>
 `
+
+/* When the user clicks on the button, toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+        }
+    }
+    }
+}
+               
+// Close the banner event listener
 
 alertBanner.addEventListener('click', e => {
     const element = e.target;
