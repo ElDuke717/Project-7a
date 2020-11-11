@@ -1,29 +1,9 @@
-const alertBanner = document.getElementById("alert");
-
-//create the html for the banner
-
-alertBanner.innerHTML =
-`
-<div class="alert-banner">
-    <div class="dropdown">
-    <button onclick="myFunction()" class="dropbtn"><strong>Alert:</strong> You have <strong>2</strong> overdue tasks to complete</button>
-    <div id="myDropdown" class="dropdown-content">
-                <a href="#Farikh_Ansfar">Review comments left by <strong>Farikh Ansfar</strong></a>
-                <a href="#Andy_Grabowski">Moderate new content from <strong>Andy Grabowski</strong></a>
-            </div>
-    <p class="myDropdown" id="myDropdown"></p>
-    
-    </div>
-    <p class="alert-banner-close">x</p>
-</div>
-`
-
 /* When the user clicks on the button, toggle between hiding and showing the dropdown content */
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
 
-// Close the dropdown if the user clicks outside of it
+// This closes the dropdown if the user clicks outside of it
 window.onclick = function(event) {
     if (!event.target.matches('.dropbtn')) {
     var dropdowns = document.getElementsByClassName("dropdown-content");
@@ -36,8 +16,33 @@ window.onclick = function(event) {
     }
     }
 }
+
+//This variable grabs the notification green bubble
+const notification = document.getElementById("notifications");
+
+//This even listener makes the bubble dissappear after it's clicked
+notification.addEventListener('click', e => {
+    const element = e.target;
+    if (element.classList.contains("dropbtn") ) {
+        notification.style.display = "none"
+    }
+});
+
+//Alert banner JS
+//This grabs the alert banner in a variable.
+const alertBanner = document.getElementById("alert");
+
+//This creates the html for the alert banner
+
+alertBanner.innerHTML =
+`
+<div class="alert-banner">
+    <p><strong>Alert:</strong> Chart data is updated hourly</p>
+    <p class="alert-banner-close">x</p>
+</div>
+`
                
-// Close the banner event listener
+// This event listener closes the alert banner when the x is clicked
 
 alertBanner.addEventListener('click', e => {
     const element = e.target;

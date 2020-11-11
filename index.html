@@ -16,6 +16,7 @@
             <h1><em>Social</em><span class="logo">Dashboard</span>&trade;</h1>
         </div>
         <div class="profile-info">
+        <!-- The svg for the bell.  -->
             <div class="bell"></div>
                 <?xml version="1.0" encoding="utf-8"?>
                 <!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
@@ -31,7 +32,14 @@
                     </g>
                 </g>
                 </svg>          
-            <div id="notifications" class="notifications"><span class="notification-text">You have <stong>10</stong> unread messages.</span></div>
+            <!-- This is the green notification green bubble next to the bell. -->
+            <div onclick="myFunction()" class="dropbtn" id="notifications" ></div>
+                    
+            <div id="myDropdown" class="dropdown-content">
+                <a href="#settings">Please confirm your <strong>settings</strong></a>
+                <a href="#members">Moderate new content from <strong>Andy Grabowski</strong></a>
+            </div>
+            <!-- The vertical line between the notification and the profile-image -->
             <div class="vl"></div>
             <img src="images/member-1.jpg" alt="User-Avatar" class="profile-image">
             <h3>Emily Burger</h3>
@@ -135,7 +143,7 @@
             <!-- Some JS happens here. -->      
         </div>
              
-        <!-- Putting in some text -->
+        <!-- Chart Links to control what data is displayed -->
          <section class="traffic" id="charts">
             <div class="traffic-header">
                 <h3 class="traffic-headline">Traffic</h3>
@@ -210,7 +218,7 @@
                 <div class="members-container">
                     <img src="images/member-1.jpg" class="profile-image">
                         <div class="members-text">
-                            <p>Emily Burger</p>
+                            <p id="Emily_Burger">Emily Burger</p>
                             <a href="#">emily.burger@roamfarm.com</a>
                         </div>
                         <p class="member-date">10/15/20</p>    
@@ -219,7 +227,7 @@
                 <div class="members-container">
                     <img src="images/member-2.jpg" class="profile-image">
                         <div class="members-text">
-                            <p>Andy Grabowski</p>
+                            <p id="Andy_Grabowski">Andy Grabowski</p>
                             <a href="mailto:grabowski@digitalgoat.com">grabowski@digitalgoat.com</a>
                         </div>
                         <p class="member-date">10/15/20</p>    
@@ -228,7 +236,7 @@
                 <div class="members-container">
                     <img src="images/member-3.jpg" class="profile-image">
                         <div class="members-text">
-                            <p>Elaine Chun</p>
+                            <p id="Elaine_Chun">Elaine Chun</p>
                             <a href="#">e.chun@wooble.com</a>
                         </div>
                         <p class="member-date">10/15/15</p>    
@@ -237,7 +245,7 @@
                 <div class="members-container">
                     <img src="images/member-4.jpg" class="profile-image">
                         <div class="members-text">
-                            <p>Farikh Ansfar</p>
+                            <p id="Farikh_Ansfar">Farikh Ansfar</p>
                             <a href="#">farikha@betterbiscuits.com</a>
                         </div>
                         <p class="member-date">10/15/20</p>    
