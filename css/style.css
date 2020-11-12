@@ -319,6 +319,7 @@ h3 {
 .traffic-nav {
   display: flex;
   justify-content: flex-end;
+  max-width: 110%;
 }
 
 .traffic-nav li {
@@ -329,7 +330,7 @@ h3 {
 .traffic-nav-link {
   list-style-type: none;
   border-radius: 20px;
-  padding: 10px;
+  padding: 5px;
   color: var(--color-border)
 }
 
