@@ -51,16 +51,36 @@ alertBanner.addEventListener('click', e => {
     }
 });
 
-//Chart.js code
+//Chart.js code - implementation of the charts and chart-switching feature.
+
+let trafficNav = document.querySelector('.traffic-nav');
 
 let trafficCanvas = document.getElementById('traffic-chart');
 
-let trafficHourly = {
-    labels: ["1:00", "2:00", "3:00", "4:00", "5:00", "6:00", "7:00",
-    "8:00", "9:00", "10:00", "11:00"],
+const trafficLinks = trafficNav.querySelectorAll('.traffic-nav-link');
+
+const hourly = [750, 1250, 1000, 2000, 1500, 1750, 1250, 1850, 2250, 1500,
+    2500];
+const daily = [5000, 7500, 1000, 12500, 15000, 17500, 20000, 18500, 22500, 15000,
+    25000];
+const weekly = [50000, 85000, 11000, 135000, 150000, 18000, 212000, 230000, 250000, 150000,
+    250000];
+const monthly = [500000, 750000, 100000, 1250000, 1500000, 990000, 2010000, 1450000, 1350000, 1500000,
+    2500000];
+
+const hourlyLabels = ["1:00", "2:00", "3:00", "4:00", "5:00", "6:00", "7:00",
+"8:00", "9:00", "10:00", "11:00"];
+const dailyLabels =  ["11/1/20", "11/2/20", "11/3/20", "11/4/20", "11/5/20", "11/6/20", "11/7/20",
+"11/8/20", "11/9/20", "11/10/20", "11/11/20"];
+const weeklyLabels = ["8/10/20", "8/17/20", "8/24/20", "8/31/20", "9/14/20", "9/21/20", "9/28/20",
+"10/5/20", "10/12/20", "10/19/20", "10/26/20"];
+const monthlyLabels = ["1/20", "2/20", "3/20", "4/20", "5/20", "6/20", "7/20",
+"8/20", "9/20", "10/20", "11/20"];
+
+let trafficData = {
+    labels: hourlyLabels,
     datasets: [{
-        data: [750, 1250, 1000, 2000, 1500, 1750, 1250, 1850, 2250, 1500,
-            2500],
+        data: hourly,
         backgroundColor: 'rgba(116, 119, 191, .3)',
         borderWidth: 1,
         lineTension: .05,
@@ -71,65 +91,11 @@ let trafficHourly = {
     }]    
 };
 
-let trafficDaily = {
-    labels: ["11/1/20", "11/2/20", "11/3/20", "11/4/20", "11/5/20", "11/6/20", "11/7/20",
-    "11/8/20", "11/9/20", "11/10/20", "11/11/20"],
-    datasets: [{
-        data: [5000, 7500, 1000, 12500, 15000, 17500, 20000, 18500, 22500, 15000,
-            25000],
-        backgroundColor: 'rgba(80, 70, 60, .4)',
-        borderWidth: 1,
-        lineTension: .05,
-        pointRadius: 5,
-        pointBorderWidth: 10,
-        pointStyle: 'circle',
-        borderColor: 'rgb(116, 119, 191, .5)',  
-    }]    
-};
-
-let trafficWeekly = {
-    labels: ["8/10/20", "8/17/20", "8/24/20", "8/31/20", "9/14/20", "9/21/20", "9/28/20",
-    "10/5/20", "10/12/20", "10/19/20", "10/26/20"],
-    datasets: [{
-        data: [50000, 85000, 11000, 135000, 150000, 18000, 212000, 230000, 250000, 150000,
-            250000],
-        backgroundColor: 'rgba(100, 100, 180, .4)',
-        borderWidth: 1,
-        lineTension: .05,
-        pointRadius: 5,
-        pointBorderWidth: 10,
-        pointStyle: 'circle',
-        borderColor: 'rgb(116, 119, 191, .5)',
-    }]    
-};
-
-let trafficMonthly = {
-    labels: ["1/20", "2/20", "3/20", "4/20", "5/20", "6/20", "7/20",
-    "8/20", "9/20", "10/20", "11/20"],
-    datasets: [{
-        data: [500000, 750000, 100000, 1250000, 1500000, 990000, 2010000, 1450000, 1350000, 1500000,
-            2500000],
-        backgroundColor: 'rgb(90, 150, 200, .4)',
-        borderWidth: 1,
-        lineTension: .05,
-        pointRadius: 5,
-        pointBorderWidth: 10,
-        pointStyle: 'circle',
-        borderColor: 'rgb(90, 150, 200, .5)',
-    }]    
-};
-
-//function that changes that calls the appropriate dataset when the corresponding button is pushed - still working on it
-function updateChart(timeSet) {
-    trafficChart.data = timeSet.datasets.data
-    chart.update();
-};
-
-
 let trafficOptions = {
     aspectRatio: 2.5,
     animation: {
-        duration: 0
+        duration: 2
+        
     },
     scales: {
         yaxes: [{
@@ -145,10 +111,59 @@ let trafficOptions = {
 
 let trafficChart = new Chart(trafficCanvas, {
     type: 'line',
-    data: trafficHourly,
+    data: trafficData,
     options: trafficOptions,
     
 });
+
+const classChange = (element, parent, name) => {
+    for (let i = 0; i < parent.length; i += 1) {
+      if (parent[i].classList.contains(name)) {
+        parent[i].classList.remove(name);
+      }
+    }
+    element.classList.add(name);
+  };
+
+trafficNav.addEventListener('click', e => {
+    // Check if the clicked element is a list item 
+    if (e.target.tagName === 'LI') {
+      let link = e.target;
+      // Add the active state class to the clicked list item
+      classChange(link, trafficLinks, 'traffic-link--active');
+      // If the clicked link is Hourly
+      if (link.textContent === 'Hourly') {
+        // Call the updatetrafficChart function to update the chart data
+        updateTrafficChart('hourly', hourly);
+      } // If Daily is clicked
+      if (link.textContent === 'Daily') {
+        updateTrafficChart('daily', daily);
+      } //same as above
+      if (link.textContent === 'Weekly') {
+        updateTrafficChart('weekly', weekly);
+      } // more of the same, this time monthly.
+      if (link.textContent === 'Monthly') {
+        updateTrafficChart('monthly', monthly);
+      }
+    }
+  });
+
+  const updateTrafficChart = (labels, datasets) => {
+    // Set the Hourly labels
+    if (labels === 'hourly') {
+      trafficData.labels = hourlyLabels;
+    } else if (labels === 'daily') {
+      trafficData.labels = dailyLabels;
+    } else if (labels === 'weekly') {
+      trafficData.labels = weeklyLabels;
+    } else if (labels === 'monthly') {
+      trafficData.labels = monthlyLabels;
+    }
+    // Set the Hourly data
+    trafficData.datasets[0].data = datasets;
+    // Update the chart
+    trafficChart.update();
+  }
 
 //Bar chart JS
 
@@ -230,10 +245,116 @@ let mobileChart = new Chart(mobileCanvas, {
     options: mobileOptions
 });
 
-const user = document.getElementById("userField");
+//Autocomplete functionality for the 'Search for User' field in the Message User Area
+
+let user = document.getElementById("userField");
+
+function autocomplete(inp, arr) {
+    /*the autocomplete function takes two arguments,
+    the text field element and an array of possible autocompleted values:*/
+    var currentFocus;
+    /*execute a function when someone writes in the text field:*/
+    inp.addEventListener("input", function(e) {
+        var a, b, i, val = this.value;
+        /*close any already open lists of autocompleted values*/
+        closeAllLists();
+        if (!val) { return false;}
+        currentFocus = -1;
+        /*create a DIV element that will contain the items (values):*/
+        a = document.createElement("DIV");
+        a.setAttribute("id", this.id + "autocomplete-list");
+        a.setAttribute("class", "autocomplete-items");
+        /*append the DIV element as a child of the autocomplete container:*/
+        this.parentNode.appendChild(a);
+        /*for each item in the array...*/
+        for (i = 0; i < arr.length; i++) {
+          /*check if the item starts with the same letters as the text field value:*/
+          if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+            /*create a DIV element for each matching element:*/
+            b = document.createElement("DIV");
+            /*make the matching letters bold:*/
+            b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+            b.innerHTML += arr[i].substr(val.length);
+            /*insert a input field that will hold the current array item's value:*/
+            b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+            /*execute a function when someone clicks on the item value (DIV element):*/
+            b.addEventListener("click", function(e) {
+                /*insert the value for the autocomplete text field:*/
+                inp.value = this.getElementsByTagName("input")[0].value;
+                /*close the list of autocompleted values,
+                (or any other open lists of autocompleted values:*/
+                closeAllLists();
+            });
+            a.appendChild(b);
+          }
+        }
+    });
+    /*execute a function presses a key on the keyboard:*/
+    inp.addEventListener("keydown", function(e) {
+        var x = document.getElementById(this.id + "autocomplete-list");
+        if (x) x = x.getElementsByTagName("div");
+        if (e.keyCode == 40) {
+          /*If the arrow DOWN key is pressed,
+          increase the currentFocus variable:*/
+          currentFocus++;
+          /*and and make the current item more visible:*/
+          addActive(x);
+        } else if (e.keyCode == 38) { //up
+          /*If the arrow UP key is pressed,
+          decrease the currentFocus variable:*/
+          currentFocus--;
+          /*and and make the current item more visible:*/
+          addActive(x);
+        } else if (e.keyCode == 13) {
+          /*If the ENTER key is pressed, prevent the form from being submitted,*/
+          e.preventDefault();
+          if (currentFocus > -1) {
+            /*and simulate a click on the "active" item:*/
+            if (x) x[currentFocus].click();
+          }
+        }
+    });
+    function addActive(x) {
+      /*a function to classify an item as "active":*/
+      if (!x) return false;
+      /*start by removing the "active" class on all items:*/
+      removeActive(x);
+      if (currentFocus >= x.length) currentFocus = 0;
+      if (currentFocus < 0) currentFocus = (x.length - 1);
+      /*add class "autocomplete-active":*/
+      x[currentFocus].classList.add("autocomplete-active");
+    }
+    function removeActive(x) {
+      /*a function to remove the "active" class from all autocomplete items:*/
+      for (var i = 0; i < x.length; i++) {
+        x[i].classList.remove("autocomplete-active");
+      }
+    }
+    function closeAllLists(elmnt) {
+      /*close all autocomplete lists in the document,
+      except the one passed as an argument:*/
+      var x = document.getElementsByClassName("autocomplete-items");
+      for (var i = 0; i < x.length; i++) {
+        if (elmnt != x[i] && elmnt != inp) {
+          x[i].parentNode.removeChild(x[i]);
+        }
+      }
+    }
+    /*execute a function when someone clicks in the document:*/
+    document.addEventListener("click", function (e) {
+        closeAllLists(e.target);
+    });
+  }
+
+  let users = ["Nick Huemmer", "Emily Burger", "Alex Grabowski", "Elaine Chun", "Farikh Ansfar", "Edward Scissorhands", "Charlie Brown", "George Michael", "Bruce Springsteen", "Tom Cruise", "FrankenWeenie"];
+  
+  
+  /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+  autocomplete(user, users);
+
+
 const message = document.getElementById("messageField");
 const send = document.getElementById("send");
-
 
 send.addEventListener('click', () => {
 
