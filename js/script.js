@@ -37,7 +37,7 @@ const alertBanner = document.getElementById("alert");
 alertBanner.innerHTML =
 `
 <div class="alert-banner">
-    <p><strong>Alert:</strong> Data is was interrupted 12 hours ago and needs to be refreshed.</p>
+    <p><strong>Alert:</strong> Social data server was interrupted 12 hours ago and data needs to be refreshed.</p>
     <p class="alert-banner-close">x</p>
 </div>
 `
