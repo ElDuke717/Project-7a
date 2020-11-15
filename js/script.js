@@ -37,7 +37,7 @@ const alertBanner = document.getElementById("alert");
 alertBanner.innerHTML =
 `
 <div class="alert-banner">
-    <p><strong>Alert:</strong> Chart data is updated hourly</p>
+    <p><strong>Alert:</strong> Data is was interrupted 12 hours ago and needs to be refreshed.</p>
     <p class="alert-banner-close">x</p>
 </div>
 `
@@ -415,6 +415,7 @@ function saveSettings(settings) {
     alert('Settings successfully saved!')
   }
 
+
   const addUserSettings = () => {
     /* Get the user's email and profile setting preferences
       Compare the values and reflect the settings for the checkboxes states
@@ -450,6 +451,7 @@ function saveSettings(settings) {
     }
   }
 
+  
   saveSettingsBtn.addEventListener('click', () => {
     saveSettings('email');
     saveSettings('profile');
@@ -464,3 +466,6 @@ function saveSettings(settings) {
       profileSettingsCheckBox.checked = false;
     }
   });
+
+
+  console.log(addUserSettings());
